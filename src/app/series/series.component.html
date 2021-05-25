@@ -1,0 +1,33 @@
+<p>series works!</p>
+<div class="container">
+  <div class = "contact-form" [formGroup]="formContact">
+    <h1> {{title}} </h1>
+    <mat-form-field>
+      <mat-label>Nombre de la serie</mat-label>
+      <input matInput type = "text" placeholder="Ej. Mezclilla" formControlName = "nombre" [errorStateMatcher]="matcher"/>
+      <mat-error *ngIf = "formContact.get('nombre')?.errors?.required">
+        El nombre es requerido
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Descripcion</mat-label>
+      <input matInput type = "text" placeholder="Descripcion" formControlName = "descripcion" [errorStateMatcher]="matcher"/>
+      <mat-error *ngIf = "formContact.get('descripcion')?.errors?.required">
+        La Descripcion es requerida
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Genero</mat-label>
+      <input matInput type="text" placeholder="Genero" formControlName = "genero" [errorStateMatcher]="matcher"/>
+      <mat-error *ngIf = "formContact.get('genero')?.errors?.required">
+        Es requerido el genero
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color = "primary" (click)="save()" [disabled]="formContact.invalid || disableButton">Guardar</button>
+  </div>
+</div>
+
+_id:string
+nombre:string;
+descripcion:string;
+genero:string
